@@ -80,7 +80,7 @@ fi
 sudo yunohost service add container-$containername
 
 # Add the redirection
-sed -i "s@PATHTOCHANGE@$path@g" ../conf/nginx.conf)
+sed -i "s@PATHTOCHANGE@$path@g" ../conf/nginx.conf
 sudo sed -i "s@CONTAINERIP@$ip@g" ../conf/nginx.conf
 sudo sed -i "s@PORT@$redirectport@g" ../conf/nginx.conf
 sudo cp ../conf/nginx.conf /etc/nginx/conf.d/$domain.d/$containername.conf
