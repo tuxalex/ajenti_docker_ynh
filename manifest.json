@@ -1,0 +1,47 @@
+{
+    "name": "Ajenti_docker",
+    "id": "ajenti_docker",
+    "description": {
+        "en": "Build ajenti app inside docker container for yunohost",
+        "fr": "Construit l'application ajenti à l'intérieur d'un conteneur docker pour yunohost"
+    },
+    "developer": {
+        "name": "tuxalex"
+    },
+    "multi_instance": "false",
+    "arguments": {
+        "install": [
+            {
+                "name": "domain",
+                "type": "domain",
+                "ask": {
+                    "en": "Chooze your domain",
+                    "fr": "Choisissez votre domaine"
+                },
+                "example": "domain.org"
+            },
+            {
+                "name": "path",
+                "type": "path",
+                "ask": {
+                    "en": "Choose a path",
+                    "fr": "Choisissez un chemin"
+                },
+                "default": "/btsync",
+                "example": "/path"
+            },
+            {
+                "name": "is_public",
+                "ask": {
+                    "en": "Is it a public redirection ?",
+                    "fr": "Est-ce une redirection publique ?"
+                },
+                "choices": [
+                    "Yes",
+                    "No"
+                ],
+                "default": "No"
+            }
+        ]
+    }
+}

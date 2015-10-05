@@ -1,0 +1,12 @@
+[Unit]
+Description=Container CONTAINERNAME
+Requires=docker.service
+After=docker.service
+
+[Service]
+ExecStart=/ur/bin/python -c "from docker import Client; cli = Client(base_url='unix://docker.sock'); cli.start(container='CONTAINERNAME')"
+ExecStop=/ur/bin/python -c "from docker import Client; cli = Client(base_url='unix://docker.sock'); cli.stop(container='CONTAINERNAME')"
+ExecRestart=/ur/bin/python -c "from docker import Client; cli = Client(base_url='unix://docker.sock'); cli.restart(container='CONTAINERNAME')"
+
+[Install]
+WantedBy=multi-user.target
