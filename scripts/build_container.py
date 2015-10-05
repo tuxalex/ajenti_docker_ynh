@@ -17,7 +17,7 @@ imagename = hostname+'/'+app
 cli = Client(base_url='unix://docker.sock')
 
 #Define port binding
-config=cli.create_host_config(port_bindings={8000: ('127.0.0.1',)})
+config=cli.create_host_config(port_bindings={8000: ('127.0.0.1', 8000)})
 
 #Build docker image with the Dockerfile and disply the output
 for line in cli.build(path='../build/', rm=True, tag=imagename):
