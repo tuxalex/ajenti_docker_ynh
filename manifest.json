@@ -27,7 +27,7 @@
                     "en": "Choose a path",
                     "fr": "Choisissez un chemin"
                 },
-                "default": "/btsync",
+                "default": "/ajenti",
                 "example": "/path"
             },
             {

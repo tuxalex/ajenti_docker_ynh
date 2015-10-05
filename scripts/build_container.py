@@ -24,11 +24,6 @@ for line in cli.build(path='../build/', rm=True, tag=imagename):
 	out = json.loads(line)
 	print(out['stream'])
 
-
-# TODO: Force stop and remove container with the same name
-#cli.stop(container=containername)
-#cli.remove_container(container=containername, force=True)
-
 #Create the container and display result
 container = cli.create_container(
 			image=imagename, 
@@ -44,7 +39,6 @@ cli.start(container=containername)
 details=cli.inspect_container(container=containername)
 #First print IP, then print redirect port, finaly print not redirect ports
 print(","+details['NetworkSettings']['IPAddress']
-      +","+details['NetworkSettings']['Ports']['8888/tcp'][0]['HostPort']
-      +","+details['NetworkSettings']['Ports']['55555/tcp'][0]['HostPort'])
+      +","+details['NetworkSettings']['Ports']['8000/tcp'][0]['HostPort'])
 exit()
 

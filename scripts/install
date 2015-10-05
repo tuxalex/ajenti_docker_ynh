@@ -1,5 +1,5 @@
 #!/bin/bash
-app=btsync_docker
+app=ajenti_docker
 set -e
 
 # Retrieve arguments
@@ -7,14 +7,14 @@ domain=$1
 path=$2
 is_public=$3
 
-# Remove trailing "/" for next commands and add user name path
-path=${path%/}
-containername=${path#/}
-
 # Check domain/path availability
 domain=${domain%/}
 sudo yunohost app checkurl $domain$path -a $app \
 	|| (echo "Path not available: $domain$path" && exit 1)
+
+# Remove trailing "/" for next commands and add user name path
+path=${path%/}
+containername=${path#/}
 
 #Test if yunohost is dockerized and install docker
 cat /proc/1/cgroup | grep -q docker
