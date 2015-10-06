@@ -17,12 +17,14 @@ imagename = hostname+'/'+app
 cli = Client(base_url='unix://docker.sock')
 
 #Define port binding
-config=cli.create_host_config(port_bindings={8000: ('127.0.0.1', 8000)})
+config=cli.create_host_config(port_bindings={8000: ('127.0.0.1',)})
 
 #Build docker image with the Dockerfile and disply the output
-for line in cli.build(path='../build/', rm=True, tag=imagename):
-	out = json.loads(line)
-	print(out['stream'])
+for line in cli.build(path='../build/', rm=True, tag=imagename):	
+	out=json.loads(line)
+	sys.stdout.write('\r')
+	sys.stdout.write(out['stream'])
+	sys.stdout.flush()
 
 #Create the container and display result
 container = cli.create_container(

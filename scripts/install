@@ -16,9 +16,9 @@ sudo yunohost app checkurl $domain$path -a $app \
 path=${path%/}
 containername=${path#/}
 
+
 #Test if yunohost is dockerized and install docker
-cat /proc/1/cgroup | grep -q docker
-if [ $? -lt 0 ]; then
+if [ ! -f /.dockerinit ]; then
 	
 	# Install Docker if it is not installed yet
 	if [ -f /usr/bin/docker ]; then
@@ -44,7 +44,7 @@ if [ -f /usr/bin/pip ]; then
 		echo "pip installer is already installed"
 	else
 		echo "pip installer will now be installed"
-		sudo apt-get install python-pip
+		sudo apt-get install python-pip -yq
 fi
 
 #Install or upgrade docker-py
@@ -54,9 +54,8 @@ sudo pip install docker-py --upgrade
 sudo mkdir -p /home/yunohost.docker/container-$app
 
 #Create Docker container via python script
-echo "Start building container..."
+echo "Start building container, please wait..."
 output=$(sudo python build_container.py $app $username $datapath $containername)
-
 #Get info of container network (ip and external ports)
 ip=$(echo $output | cut -f2 -d,)
 #ip=$(echo $ip | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}") #force ip format
