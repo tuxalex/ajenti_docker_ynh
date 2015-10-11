@@ -2,5 +2,5 @@
 * Upgrade script
 * Backup script
 * Restore script
-* supervisor
+* Use socket for ajenti watch yunohost container and/or host 
 
