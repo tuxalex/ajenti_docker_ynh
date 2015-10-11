@@ -23,6 +23,7 @@ This package installs ajenti in container with docker and use redirection in ngi
 The install script install docker if yunohost have installed on the host.
 Docker-py has been used as a docker client to interact with docker thus this package can be used on a host with yunohost installed (not tested yet) or on a yunohost docker container.
 The first installation can take time, because docker download the base image and construct the ajenti image, so be patient.
+In yunohost this app is install with the name "ajenti_docker"
 
 Existing configuration
 ----------------------
