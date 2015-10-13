@@ -5,13 +5,13 @@ path=$(sudo yunohost app setting $app path)
 domain=$(sudo yunohost app setting $app domain)
 containername=${path#/}
 
-# REmove container
+# Remove container
 sudo python remove_container.py $app $containername
 
 # Remove nginx configuration
 sudo rm /etc/nginx/conf.d/$domain.d/$containername.conf
 
-# Remove containert
+# Remove container config
 sudo rm -rf /home/yunohost.docker/container-$app/config
 
 # Reload
