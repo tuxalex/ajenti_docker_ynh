@@ -26,7 +26,7 @@ cli.stop(container=containername)
 cli.remove_container(container=containername, force=True)
 
 #Remove docker image
-#cli.remove_image(image=imagename, force=True)
+cli.remove_image(image=imagename, force=True)
 
 exit()
 
